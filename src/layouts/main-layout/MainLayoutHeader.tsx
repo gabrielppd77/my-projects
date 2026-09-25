@@ -34,9 +34,19 @@ export default function MainLayoutHeader() {
         elevation={0}
         sx={{
           backdropFilter: "blur(8px)",
-          backgroundColor: "rgba(11, 17, 32, 0.8)",
-          borderBottom: "1px solid",
-          borderColor: "divider",
+          backgroundColor: "rgba(7, 0, 15, 0.8)",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: 3,
+            background:
+              "linear-gradient(90deg, #ff2bd6, #00f0ff, #faff00, #7c3aed, #ff2bd6)",
+            boxShadow: "0 0 12px #ff2bd6, 0 0 24px #00f0ff",
+            animation: "hue-spin 3s linear infinite",
+          },
         }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -44,9 +54,15 @@ export default function MainLayoutHeader() {
             component="a"
             href="#topo"
             variant="h6"
-            sx={{ color: "text.primary", textDecoration: "none", fontWeight: 700 }}
+            sx={{
+              color: "#00f0ff",
+              textDecoration: "none",
+              fontWeight: 900,
+              letterSpacing: "0.15em",
+              animation: "neon-flicker 3s linear infinite",
+            }}
           >
-            Gabriel Domingos
+            GD://
           </Typography>
 
           {isMobile ? (
@@ -60,7 +76,17 @@ export default function MainLayoutHeader() {
           ) : (
             <Stack direction="row" spacing={1}>
               {NAV_ITEMS.map((item) => (
-                <Button key={item.href} href={item.href} color="inherit">
+                <Button
+                  key={item.href}
+                  href={item.href}
+                  color="inherit"
+                  sx={{
+                    "&:hover": {
+                      color: "#faff00",
+                      textShadow: "0 0 8px #faff00, 0 0 18px #faff00",
+                    },
+                  }}
+                >
                   {item.label}
                 </Button>
               ))}

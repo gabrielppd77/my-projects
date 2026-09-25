@@ -26,29 +26,52 @@ const CONTACTS = [
   },
 ];
 
+const CONTACT_COLORS = ["#ff2bd6", "#00f0ff", "#faff00"];
+
 export default function Contact() {
   return (
     <SectionContainer
       id="contato"
       title="Contato"
+      color="#00f0ff"
       subtitle="Vamos conversar sobre um projeto ou oportunidade?"
     >
       <Stack direction="row" spacing={3}>
-        {CONTACTS.map((contact) => (
-          <Tooltip key={contact.label} title={contact.label}>
-            <IconButton
-              href={contact.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
-              sx={{ border: "1px solid", borderColor: "divider" }}
-            >
-              {contact.icon}
-            </IconButton>
-          </Tooltip>
-        ))}
+        {CONTACTS.map((contact, index) => {
+          const glowColor = CONTACT_COLORS[index % CONTACT_COLORS.length];
+
+          return (
+            <Tooltip key={contact.label} title={contact.label}>
+              <IconButton
+                href={contact.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: glowColor,
+                  border: `2px solid ${glowColor}`,
+                  animation: "glow-pulse 1.8s ease-in-out infinite",
+                  animationDelay: `${index * -0.6}s`,
+                  transition: "transform 0.2s ease",
+                  "&:hover": {
+                    transform: "scale(1.2) rotate(-10deg)",
+                  },
+                }}
+              >
+                {contact.icon}
+              </IconButton>
+            </Tooltip>
+          );
+        })}
       </Stack>
-      <Typography variant="body2" color="text.secondary">
+      <Typography
+        variant="body2"
+        sx={{
+          fontFamily: '"Press Start 2P", monospace',
+          fontSize: "0.7rem",
+          color: "#faff00",
+          textShadow: "0 0 8px #faff00",
+        }}
+      >
         gabrielppd77@outlook.com
       </Typography>
     </SectionContainer>

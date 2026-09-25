@@ -1,4 +1,3 @@
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Stack from "@mui/material/Stack";
@@ -8,6 +7,8 @@ import Button from "@mui/material/Button";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import AndroidIcon from "@mui/icons-material/Android";
+
+import NeonCard from "@components/NeonCard";
 
 import type { ProjectDto } from "../data/types";
 
@@ -19,17 +20,28 @@ export default function ProjectCard(props: ProjectCardProps) {
   const { project } = props;
 
   return (
-    <Card
-      variant="outlined"
-      sx={{ height: "100%", display: "flex", flexDirection: "column" }}
-    >
+    <NeonCard>
       <CardContent sx={{ flex: 1 }}>
         <Stack spacing={1.5}>
-          <Stack direction="row" justifyContent="space-between" alignItems="center">
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="flex-start"
+            spacing={1}
+          >
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: 900, color: "#fff", textShadow: "0 0 10px #ff2bd6" }}
+            >
               {project.name}
             </Typography>
-            <Chip label={project.tag} size="small" color="primary" variant="outlined" />
+            <Chip
+              label={project.tag}
+              size="small"
+              color="warning"
+              variant="outlined"
+              sx={{ boxShadow: "0 0 8px #faff00", flexShrink: 0 }}
+            />
           </Stack>
           <Typography variant="body2" color="text.secondary">
             {project.description}
@@ -57,6 +69,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             rel="noopener noreferrer"
             size="small"
             variant="outlined"
+            color="secondary"
             disabled={!project.appDownloadUrl}
             startIcon={<AndroidIcon />}
           >
@@ -69,11 +82,12 @@ export default function ProjectCard(props: ProjectCardProps) {
           rel="noopener noreferrer"
           size="small"
           variant="text"
+          color="secondary"
           startIcon={<GitHubIcon />}
         >
           Ver código
         </Button>
       </CardActions>
-    </Card>
+    </NeonCard>
   );
 }

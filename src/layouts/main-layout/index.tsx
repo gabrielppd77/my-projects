@@ -1,5 +1,7 @@
 import Box from "@mui/material/Box";
 
+import NeonBackground from "@components/NeonBackground";
+
 import MainLayoutHeader from "./MainLayoutHeader";
 import MainLayoutFooter from "./MainLayoutFooter";
 
@@ -12,6 +14,8 @@ export default function MainLayout(props: MainLayoutProps) {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <NeonBackground />
+      <Box className="scanlines" aria-hidden />
       <MainLayoutHeader />
       <Box component="main" sx={{ flex: 1 }}>
         {children}

@@ -10,6 +10,7 @@ export default function Projects() {
     <SectionContainer
       id="projetos"
       title="Projetos"
+      color="#faff00"
       subtitle="Aplicações que desenvolvi, do backend ao mobile."
     >
       <Grid container spacing={3}>
