@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import StackInfra from "./components/StackInfra";
+import InsertCoin from "./components/InsertCoin";
 import Contact from "./components/Contact";
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
       <About />
       <Projects />
       <StackInfra />
+      <InsertCoin />
       <Contact />
     </>
   );
