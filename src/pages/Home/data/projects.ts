@@ -22,6 +22,18 @@ const projects: ProjectDto[] = [
     isMobileApp: true,
   },
   {
+    name: "RiceAndBeans",
+    description:
+      "Cardápio online acessado via QR code, com painel administrativo para o estabelecimento gerenciar o cardápio e loja para o cliente navegar pelos itens.",
+    tag: "Full stack",
+    links: [
+      { label: "Acessar loja", url: "https://riceandbeans.necro.com.br/" },
+      { label: "Painel admin", url: "https://admin.riceandbeans.necro.com.br/" },
+      { label: "API", url: "https://api.riceandbeans.necro.com.br/" },
+    ],
+    repoUrl: "https://github.com/gabrielppd77/RiceAndBeans",
+  },
+  {
     name: "Backup Manager",
     description:
       "Serviço responsável pelo backup periódico do servidor, rodando como container isolado, sem interface pública.",
