@@ -16,6 +16,14 @@ interface ProjectCardProps {
   project: ProjectDto;
 }
 
+function formatStartDate(isoDate: string) {
+  const [year, month] = isoDate.split("-").map(Number);
+  return new Date(year, month - 1).toLocaleDateString("pt-BR", {
+    month: "short",
+    year: "numeric",
+  });
+}
+
 export default function ProjectCard(props: ProjectCardProps) {
   const { project } = props;
 
@@ -43,6 +51,9 @@ export default function ProjectCard(props: ProjectCardProps) {
               sx={{ boxShadow: "0 0 8px #faff00", flexShrink: 0 }}
             />
           </Stack>
+          <Typography variant="caption" color="text.secondary">
+            Início: {formatStartDate(project.startDate)}
+          </Typography>
           <Typography variant="body2" color="text.secondary">
             {project.description}
           </Typography>

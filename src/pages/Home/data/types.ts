@@ -9,6 +9,7 @@ export interface ProjectDto {
   tag: string;
   links: ProjectLinkDto[];
   repoUrl: string;
+  startDate: string;
   isMobileApp?: boolean;
   appDownloadUrl?: string;
 }

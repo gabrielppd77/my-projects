@@ -11,6 +11,7 @@ const projects: ProjectDto[] = [
       { label: "API", url: "https://controle-financeiro-api.necro.com.br/" },
     ],
     repoUrl: "https://github.com/gabrielppd77/ControleFinanceiro",
+    startDate: "2026-02-11",
   },
   {
     name: "MICAR",
@@ -19,6 +20,7 @@ const projects: ProjectDto[] = [
     tag: "API + Mobile",
     links: [{ label: "API", url: "https://micar-api.necro.com.br/" }],
     repoUrl: "https://github.com/gabrielppd77/Micar",
+    startDate: "2026-07-24",
     isMobileApp: true,
   },
   {
@@ -32,6 +34,7 @@ const projects: ProjectDto[] = [
       { label: "API", url: "https://api.riceandbeans.necro.com.br/" },
     ],
     repoUrl: "https://github.com/gabrielppd77/RiceAndBeans",
+    startDate: "2025-02-18",
   },
   {
     name: "Backup Manager",
@@ -40,6 +43,7 @@ const projects: ProjectDto[] = [
     tag: "Serviço / Infra",
     links: [],
     repoUrl: "https://github.com/gabrielppd77/BackupManager",
+    startDate: "2025-04-29",
   },
 ];
 
