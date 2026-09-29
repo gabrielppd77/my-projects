@@ -11,8 +11,13 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import MusicOffIcon from "@mui/icons-material/MusicOff";
+import Tooltip from "@mui/material/Tooltip";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+
+import useChiptune, { CHIPTUNE_TOGGLE_ATTRIBUTE } from "@hooks/useChiptune";
 
 const NAV_ITEMS = [
   { label: "Sobre", href: "#sobre" },
@@ -26,6 +31,24 @@ export default function MainLayoutHeader() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isPlaying, toggle } = useChiptune();
+
+  const musicToggle = (
+    <Tooltip title={isPlaying ? "Desligar música" : "Ligar música"}>
+      <IconButton
+        {...{ [CHIPTUNE_TOGGLE_ATTRIBUTE]: true }}
+        aria-label={isPlaying ? "Desligar música" : "Ligar música"}
+        aria-pressed={isPlaying}
+        onClick={toggle}
+        sx={{
+          color: isPlaying ? "#ff2bd6" : "text.secondary",
+          filter: isPlaying ? "drop-shadow(0 0 6px #ff2bd6)" : "none",
+        }}
+      >
+        {isPlaying ? <MusicNoteIcon /> : <MusicOffIcon />}
+      </IconButton>
+    </Tooltip>
+  );
 
   return (
     <>
@@ -66,33 +89,36 @@ export default function MainLayoutHeader() {
             GD://
           </Typography>
 
-          {isMobile ? (
-            <IconButton
-              aria-label="Abrir menu"
-              onClick={() => setMobileOpen(true)}
-              sx={{ color: "text.primary" }}
-            >
-              <MenuIcon />
-            </IconButton>
-          ) : (
-            <Stack direction="row" spacing={1}>
-              {NAV_ITEMS.map((item) => (
-                <Button
-                  key={item.href}
-                  href={item.href}
-                  color="inherit"
-                  sx={{
-                    "&:hover": {
-                      color: "#faff00",
-                      textShadow: "0 0 8px #faff00, 0 0 18px #faff00",
-                    },
-                  }}
-                >
-                  {item.label}
-                </Button>
-              ))}
-            </Stack>
-          )}
+          <Stack direction="row" alignItems="center" spacing={1}>
+            {musicToggle}
+            {isMobile ? (
+              <IconButton
+                aria-label="Abrir menu"
+                onClick={() => setMobileOpen(true)}
+                sx={{ color: "text.primary" }}
+              >
+                <MenuIcon />
+              </IconButton>
+            ) : (
+              <Stack direction="row" spacing={1}>
+                {NAV_ITEMS.map((item) => (
+                  <Button
+                    key={item.href}
+                    href={item.href}
+                    color="inherit"
+                    sx={{
+                      "&:hover": {
+                        color: "#faff00",
+                        textShadow: "0 0 8px #faff00, 0 0 18px #faff00",
+                      },
+                    }}
+                  >
+                    {item.label}
+                  </Button>
+                ))}
+              </Stack>
+            )}
+          </Stack>
         </Toolbar>
       </AppBar>
 
